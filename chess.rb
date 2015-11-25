@@ -39,11 +39,70 @@ get '/' do
 end
 
 get '/move' do
+
+
 	session['b'] = g.b
 	query = params.map{|key, value| "#{key}=#{value}"}.join("&")
-	if (params["End_Row"] != nil) && (params["End_Column"] != nil) && 
-		g.move_piece(g.b.board[session['c'].row][0][session['c'].column], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, current_turn)
-		current_turn = g.turn(current_turn)
+
+
+
+if params["Row"] && params["Column"] 
+	session['p'] = session['b'].find_piece(params["Row"].to_i, params["Column"].to_i)
+end
+
+
+
+
+if params["End_Row"] && params["End_Column"]
+	if (session['b'].find_piece(params["End_Row"].to_i, params["End_Column"].to_i).is_a? Piece)
+		session['t'] = session['b'].find_piece(params["End_Row"].to_i, params["End_Column"].to_i)
+	else
+		session['t'] = "_"
+	end
+end
+
+
+	if (params["End_Row"] != nil) && (params["End_Column"] != nil) #&& 
+		#g.move_piece(g.b.board[session['c'].row][0][session['c'].column], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, current_turn)
+		
+
+
+
+
+
+		if g.check?(session['b'], current_turn) == true
+			if (g.move_piece(g.b.board[session['c'].row][0][session['c'].column], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, current_turn)) &&
+				(g.check?(session['b'], current_turn) == false)
+				current_turn = g.turn(current_turn)
+			else
+				print "You are still in check."
+				g.b.board[session['p'].row][0][session['p'].column] = session['b'].board[params["End_Row"].to_i][0][params["End_Column"].to_i]
+				#byebug
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i].row = session['p'].row
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i].column =  session['p'].column
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i] = session['t']
+			end
+		elsif (g.check?(session['b'], current_turn) == false) &&
+		   (g.move_piece(g.b.board[session['c'].row][0][session['c'].column], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, current_turn))
+		   if g.check?(session['b'], current_turn) == true
+		   		print "This will put you in check."
+				session['b'].board[session['c'].row][0][session['c'].column] = session['p']
+				session['p'].row = params["End_Row"].to_i
+				session['p'].column = params["End_Column"].to_i
+				g.b.board[session['c'].row][0][session['c'].column] = session['t']
+			else
+			current_turn = g.turn(current_turn)
+			end
+		end
+
+
+
+
+
+
+
+
+		#current_turn = g.turn(current_turn)
 		redirect("/")
 	elsif (params["End_Row"] != nil) && (params["End_Column"] != nil) && 
 		g.move_piece(session['c'], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, "W") == false
