@@ -237,9 +237,9 @@ end
 
 	def img_tag(piece)
 		if piece.is_a? Piece
-			return "public/chess/#{piece.color}#{piece.type}"
+			return "/public/chess/#{piece.color}#{piece.type}"
 		else
-			return "public/chess/default"
+			return "/public/chess/default"
 		end
 	end
 
