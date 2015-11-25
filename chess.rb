@@ -80,6 +80,7 @@ get '/new' do
 		session['b'] = g.b
 		redirect("/")
 	end
+	new_game
 
 	erb :new, :locals => {:g => g, :selected_piece => session['c'], :current_turn => current_turn}
 end
