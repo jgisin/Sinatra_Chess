@@ -1,4 +1,6 @@
 require './chess'
 run Sinatra::Application
 
-use Rack::Static, :urls => ['/images'], :root => 'public'
+get %r{.*images/} do
+redirect('images/')
+end
