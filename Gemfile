@@ -5,3 +5,5 @@ gem 'sinatra'
 gem 'colorize'
 
 gem 'byebug'
+
+gem 'rack-flash-session'
