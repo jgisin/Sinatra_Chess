@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'byebug'
+#require 'byebug'
 require_relative 'game'
 
 	move_piece = nil
