@@ -104,7 +104,7 @@
 	<h1>Chess</h1>
 	<h2>Current Turn: <%= current_turn %></h2>
 	<p><%= (g.check?(g.b, current_turn) == false) ? nil : "You are in check" %></p>
-	<a href = "<% new_game %>">New Game</a>
+	<a href = "#">New Game<% new_game %></a>
 </div>
 
 </body>
