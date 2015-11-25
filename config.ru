@@ -1,6 +1,4 @@
 require './chess'
 run Sinatra::Application
 
-map "/public" do
-  run Rack::Directory.new("./public")
-end
+use Rack::Static, :urls => ['/images'], :root => 'public'

@@ -68,12 +68,6 @@ get '/final' do
 end
 
 
-class Chess < Sinatra::Base
-	set :static, true
-	set :root, File.dirname(__FILE__)
-end
-
-
 
 
 
