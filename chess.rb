@@ -70,7 +70,7 @@ end
 
 class Chess < Sinatra::Base
 	set :static, true
-	seet :root, File.dirname(__FILE__)
+	set :root, File.dirname(__FILE__)
 end
 
 
