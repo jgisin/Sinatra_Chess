@@ -74,7 +74,7 @@ get '/move' do
 		session['b'] = nil
 		session['c'] = nil
 		g = Game.new
-		session ['b'] = g.b
+		session['b'] = g.b
 		redirect("/")
 	end
 
