@@ -35,6 +35,14 @@ get '/' do
 		end
 	end
 
+	def new_game
+		g = nil
+		session['b'] = nil
+		session['c'] = nil
+		g = Game.new
+		session ['b'] = g.b
+	end
+
 
 
 	erb :index, :locals => {:g => g, :selected_piece => session['c'], :current_turn => current_turn}
@@ -59,6 +67,15 @@ get '/move' do
 		else
 			return "Inactive"
 		end
+	end
+
+	def new_game
+		g = nil
+		session['b'] = nil
+		session['c'] = nil
+		g = Game.new
+		session ['b'] = g.b
+		redirect("/")
 	end
 
 	erb :move, :locals => {:g => g, :selected_piece => session['c'], :current_turn => current_turn}
