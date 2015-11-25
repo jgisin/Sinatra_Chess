@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" type = "text/css" href = "style.css">
+	</head>
+
+
+<body>
+
+<div class = "left-board">
+
+	A<br />
+	B<br />
+	C<br />
+	D<br />
+	E<br />
+	F<br />
+	G<br />
+	H<br />
+</div>
+
+
+<div class = "board">
+	<!-- Row A (Row 1 in game.rb) -->
+<% g.b.board[1][0].each_with_index do |piece, index| %>
+<a href = "<%= piece?(piece) %>" > 
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "White" : "Black" %> "> 
+</a>
+<% end %>
+<br />
+
+	<!-- Row B (Row 2 in game.rb) -->
+<% g.b.board[2][0].each_with_index do |piece, index| %>
+<a href = "<%= piece?(g.b.board[2][0][index]) %>" >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "Black" : "White" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row C (Row 2 in game.rb) -->
+<% g.b.board[3][0].each_with_index do |piece, index| %>
+<a href = "<%= piece?(g.b.board[3][0][index]) %>" >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "White" : "Black" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row D (Row 2 in game.rb) -->
+<% g.b.board[4][0].each_with_index do |piece, index| %>
+<a href = "<%= piece?(piece) %>" >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "Black" : "White" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row E (Row 2 in game.rb) -->
+<% g.b.board[5][0].each_with_index do |piece, index| %>
+<a href = <%= piece?(piece) %> >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "White" : "Black" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row F (Row 2 in game.rb) -->
+<% g.b.board[6][0].each_with_index do |piece, index| %>
+<a href = "<%= piece?(piece) %>" >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "Black" : "White" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row G (Row 2 in game.rb) -->
+<% g.b.board[7][0].each_with_index do |piece, index| %>
+<a href = <%= piece?(piece) %> >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "White" : "Black" %> ">
+</a>
+<% end %>
+<br />
+
+	<!-- Row H (Row 2 in game.rb) -->
+<% g.b.board[8][0].each_with_index do |piece, index| %>
+<a href = <%= piece?(piece) %> >
+<img src = "<%= g.img_tag(piece) %>.png" class = "<%= index % 2 == 0 ? "Black" : "White" %> ">
+</a>
+<% end %>
+<br />
+
+
+</div>
+
+<div class = "bottom-board">
+	1&nbsp;&nbsp;&nbsp;
+	2&nbsp;&nbsp;&nbsp;
+	3&nbsp;&nbsp;&nbsp;
+	4&nbsp;&nbsp;&nbsp;
+	5&nbsp;&nbsp;&nbsp;
+	6&nbsp;&nbsp;&nbsp;
+	7&nbsp;&nbsp;&nbsp;
+	8&nbsp;&nbsp;&nbsp;
+
+</div>
+
+<div class = "form">
+	<h1>Chess</h1>
+	<h2>Current Turn: <%= current_turn %></h2>
+	<p><%= (g.check?(g.b, current_turn) == false) ? nil : "You are in check" %></p>
+</div>
+
+</body>
+
+</html>
