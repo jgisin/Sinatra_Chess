@@ -7,9 +7,7 @@ require_relative 'game'
 		current_turn = "W"
 
 enable :sessions
-  set :static, true
-  set :root, File.dirname(__FILE__)
-  set :public, 'public'
+
 
 get '/' do
 	#if g.checkmate?(current_turn) == true
