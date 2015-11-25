@@ -74,6 +74,7 @@ get '/new' do
 
 	def new_game
 		g = nil
+		g.b.board = nil
 		session['b'] = nil
 		session['c'] = nil
 		g = Game.new
