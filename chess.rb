@@ -86,10 +86,11 @@ end
 		   (g.move_piece(g.b.board[session['c'].row][0][session['c'].column], session['b'], params["End_Row"].to_i, params["End_Column"].to_i, current_turn))
 		   if g.check?(session['b'], current_turn) == true
 		   		print "This will put you in check."
-				session['b'].board[session['c'].row][0][session['c'].column] = session['p']
-				session['p'].row = params["End_Row"].to_i
-				session['p'].column = params["End_Column"].to_i
-				g.b.board[session['c'].row][0][session['c'].column] = session['t']
+				g.b.board[session['p'].row][0][session['p'].column] = session['b'].board[params["End_Row"].to_i][0][params["End_Column"].to_i]
+				#byebug
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i].row = session['p'].row
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i].column =  session['p'].column
+				g.b.board[params["End_Row"].to_i][0][params["End_Column"].to_i] = session['t']
 			else
 			current_turn = g.turn(current_turn)
 			end
