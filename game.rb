@@ -237,9 +237,9 @@ end
 
 	def img_tag(piece)
 		if piece.is_a? Piece
-			return "images/#{piece.color}#{piece.type}"
+			return "/images/#{piece.color}#{piece.type}"
 		else
-			return "images/default"
+			return "/images/default"
 		end
 	end
 
