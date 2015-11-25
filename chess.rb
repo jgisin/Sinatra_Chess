@@ -72,15 +72,6 @@ end
 
 get '/new' do
 
-
-	new_game
-
-	erb :new, :locals => {:g => g, :selected_piece => session['c'], :current_turn => current_turn}
-end
-
-
-
-	def new_game
 		g.b.board = nil
 		g = nil
 		session['b'] = nil
@@ -88,6 +79,14 @@ end
 		g = Game.new
 		session['b'] = g.b
 		redirect("/")
-	end
+
+	erb :new, :locals => {:g => g, :selected_piece => session['c'], :current_turn => current_turn}
+end
+
+
+
+
+
+
 
 
