@@ -72,7 +72,6 @@ end
 
 get '/new' do
 
-		g.b.board = nil
 		g = nil
 		session['b'] = nil
 		session['c'] = nil
